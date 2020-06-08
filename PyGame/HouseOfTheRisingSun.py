@@ -1,3 +1,5 @@
+### SRC - There are some missing variables... See below
+
 import pygame
 
 # -- Global Constants
@@ -26,6 +28,7 @@ clock = pygame.time.Clock()
 # -- Decalring variables for the position of the sun
 sun_x = 100
 sun_y = 40
+### SRC - You need to give a, b and c values!
 a = 
 b = 
 c = 
