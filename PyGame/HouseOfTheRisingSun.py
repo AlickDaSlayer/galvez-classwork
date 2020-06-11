@@ -1,6 +1,5 @@
-### SRC - There are some missing variables... See below
-
 import pygame
+import math
 
 # -- Global Constants
 # -- Colours
@@ -17,7 +16,7 @@ NAVY = 	(0,0,128)
 # -- Initialise PyGame
 pygame.init()
 # -- Blank Screen
-size = (640,480)
+size = (620,480)
 screen = pygame.display.set_mode(size)
 # -- Title of new window/screen
 pygame.display.set_caption("House")
@@ -28,10 +27,9 @@ clock = pygame.time.Clock()
 # -- Decalring variables for the position of the sun
 sun_x = 100
 sun_y = 40
-### SRC - You need to give a, b and c values!
-a = 
-b = 
-c = 
+a = 0.00048828125
+b = -0.3125
+c = 100
 ### -- Game Loop
 
 while not done:
@@ -42,8 +40,8 @@ while not done:
     #End If
     #Next event
     # -- Game logic goes after this comment
-    sun_x = sun_x + 5
-    sun_y= int(a * sun_x + b * sun_x + c)
+    sun_x = sun_x + 2
+    sun_y= int(a * sun_x**2 + b * sun_x + c)
 
     if sun_x == 640:
         sun_x = 0
