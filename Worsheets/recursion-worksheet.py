@@ -4,6 +4,8 @@ def calcSum(n):
         return n
     else:
         return n + calcSum(n - 2)
+    #end if
+#end function
 
 sum = calcSum(10)
 print("sum = ", sum)
