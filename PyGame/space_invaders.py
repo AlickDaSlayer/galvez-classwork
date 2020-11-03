@@ -1,3 +1,6 @@
+### SRC - This is a good start, but I'd like to see something
+### a bit more playable!
+
 import pygame
 import random
 import math
