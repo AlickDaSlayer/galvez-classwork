@@ -56,7 +56,7 @@ class Player(pygame.sprite.Sprite):
         self.speed = 0
         self.lives = 5
         self.bullet_count = 50
-        
+
     def player_set_speed(self, val):
         self.speed =+ val
         if(self.rect.x < 0):
@@ -96,8 +96,8 @@ invader_group = pygame.sprite.Group()   # - Create a list of the invader blocks
 bullet_group = pygame.sprite.Group()
 all_sprites_group = pygame.sprite.Group()   # - Create a list of all sprites
 
-number_of_invaders = 10
-for x in range(number_of_invaders):
+number_of_invaders = 8
+for i in range(number_of_invaders):
     my_invader = Invaders(BLUE, 20, 20, 1)
     invader_group.add(my_invader)
     all_sprites_group.add(my_invader)
@@ -139,11 +139,18 @@ while not done:
         bullet_hit_group = pygame.sprite.spritecollide(bullet, invader_group, True)
         for my_invader in bullet_hit_group:
             bullet_group.remove(bullet)
+            invader_group.remove(my_invader)
             all_sprites_group.remove(bullet)
             score += 100
         if bullet.rect.y < -10:
             bullet_group.remove(bullet)
             all_sprites_group.remove(bullet)
+
+    if not invader_group:
+        for i in range(number_of_invaders):
+            my_invader = Invaders(BLUE, 20, 20, 1)
+            invader_group.add(my_invader)
+            all_sprites_group.add(my_invader)
 
     all_sprites_group.update()
 
