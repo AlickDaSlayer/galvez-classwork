@@ -38,7 +38,7 @@ class snow(pygame.sprite.Sprite):
             ### SRC - This line should be
             ### self.rect.y = 0
             ### so that the snowflakes restart from the top of the screen
-            self.rect.y = random.randrange(0, 400)
+            self.rect.y = 0
     #End Procedure
 #End Class
       
