@@ -1,11 +1,11 @@
 
-def rev_word(word):
-    letter = word[0]
-    if len(word) == 1:
+def rev_func(input_value):
+    letter = input_value[0]
+    if len(input_value) == 1:
         return letter
     else:
-        return rev_word(word[1:]) + letter
+        return rev_func(input_value[1:]) + letter
     #endif
 #end function
 
-print(rev_word('STAR'))
+print(rev_func('STAR'))
