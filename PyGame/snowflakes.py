@@ -35,7 +35,10 @@ class snow(pygame.sprite.Sprite):
         self.rect.y = self.rect.y + self.speed
         if self.rect.y == 480:
             self.rect.x = random.randrange(0, 600)
-            self.rect.y = random.randrange(0, 400)
+            ### SRC - This line should be
+            ### self.rect.y = 0
+            ### so that the snowflakes restart from the top of the screen
+            self.rect.y = 0
     #End Procedure
 #End Class
       
