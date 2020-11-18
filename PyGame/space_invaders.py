@@ -25,22 +25,19 @@ SCREEN = pygame.display.set_mode(DIMENSIONS)
 pygame.display.set_caption("Space Invaders")
 
 class Invaders(pygame.sprite.Sprite):
-    def __init__(self, color, width, height, speed):
+    def __init__(self, x, y, color, width, height, speed):
         super().__init__()
         self.image = pygame.Surface([width,height])
         self.image.fill(color)
         # Set the position of the invader
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(0, 600)
-        self.rect.y = random.randrange(-50, -10)
+        self.rect.x = x
+        self.rect.y = y
         self.speed = 1
 
     def update(self):
-        self.rect.y = self.rect.y + self.speed
-        if self.rect.y == 480:
-            self.rect.x = random.randrange(0, 600)
-            self.rect.y = random.randrange(-50, -10)
-            player.lives -= 1
+        self.rect.x = self.rect.x + self.speed
+        
     #end procedure
 #end class
 
@@ -80,7 +77,7 @@ class Bullet(pygame.sprite.Sprite):
         self.y = y
         self.rect.x = self.x
         self.rect.y = self.y
-        self.speed = 4
+        self.speed = 5
 
     def update(self):
         self.rect.y = self.rect.y - self.speed
@@ -91,14 +88,19 @@ font = pygame.font.SysFont('Calibri', 25, True, False)
 big_font = pygame.font.SysFont('Calibri', 50, True, False)
 
 score = 0
+invader_round = 1
 
 invader_group = pygame.sprite.Group()   # - Create a list of the invader blocks
 bullet_group = pygame.sprite.Group()
 all_sprites_group = pygame.sprite.Group()   # - Create a list of all sprites
 
-number_of_invaders = 8
-for i in range(number_of_invaders):
-    my_invader = Invaders(BLUE, 20, 20, 1)
+
+spawnPositions = [20,70,120,170,220,270,320,370,420,470]
+yCoord = 2
+
+for i in range(len(spawnPositions)): # - First row of invaders
+    xCoord = spawnPositions[i] 
+    my_invader = Invaders(xCoord, yCoord, BLUE, 20, 20, 1)
     invader_group.add(my_invader)
     all_sprites_group.add(my_invader)
 
@@ -120,7 +122,7 @@ while not done:
                 player.bullet_count = player.bullet_count - 1
 
     keys = pygame.key.get_pressed()
-
+    
     if event.type == pygame.KEYDOWN:
         if keys[pygame.K_LEFT]:
             player.player_set_speed(-7)
@@ -131,6 +133,16 @@ while not done:
 
     # -- Game logic goes after this comment
 
+    for my_invader in (invader_group.sprites()):
+        if my_invader.rect.x == 620:
+            for my_invader in (invader_group.sprites()):
+                my_invader.rect.y = my_invader.rect.y + 40
+                my_invader.speed = my_invader.speed * -1
+        if my_invader.rect.x == 0:
+            for my_invader in (invader_group.sprites()):
+                my_invader.rect.y = my_invader.rect.y + 40
+                my_invader.speed = my_invader.speed * -1
+            
     player_hit_group = pygame.sprite.spritecollide(player, invader_group, True)
     for x in player_hit_group:
         player.lives = player.lives - 1
@@ -147,15 +159,16 @@ while not done:
             all_sprites_group.remove(bullet)
 
     if not invader_group:
-        for i in range(number_of_invaders):
-            my_invader = Invaders(BLUE, 20, 20, 1)
+        invader_round += 1
+        for i in range(len(spawnPositions)):
+            xCoord = spawnPositions[i] 
+            my_invader = Invaders(xCoord, yCoord, BLUE, 20, 20, 1)
             invader_group.add(my_invader)
             all_sprites_group.add(my_invader)
 
     all_sprites_group.update()
 
     SCREEN.fill(BLACK)
-
     all_sprites_group.draw(SCREEN)
 
     # - Text on screen
@@ -163,6 +176,8 @@ while not done:
     SCREEN.blit(label_score, [10, 10])
     label_lives = font.render(f"Lives: {player.lives}", True, WHITE)
     SCREEN.blit(label_lives, [10, 40])
+    label_round = font.render(f"Round: {invader_round}", True, WHITE)
+    SCREEN.blit(label_round, [525, 10])
 
     if player.lives == 0:
         all_sprites_group.empty()
