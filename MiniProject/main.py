@@ -24,11 +24,15 @@ class Player(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        self.change = -1
         self.speed = 0
 
     def movePlayer(self,x,y):
         self.rect.x += x
-        self.rect.y += y 
+        self.rect.y += y
+
+    def update(self):  
+        pass
 
 class Wall(pg.sprite.Sprite):
     def __init__(self, x, y, w, h):
@@ -108,8 +112,7 @@ while not done:
             player.movePlayer(0,1)
     elif event.type == pg.KEYUP:
         player.movePlayer(0,0)
-
-    
+        
     # --- Game logic should go here
  
     # --- Screen-clearing code goes here
