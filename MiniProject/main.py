@@ -26,13 +26,9 @@ class Player(pg.sprite.Sprite):
         self.rect.y = y
         self.speed = 0
 
-    def set_speed(self, val):
-        self.speed =+ val
-
-    def moveLateral(self):
-        self.rect.x += self.speed
-    def moveVertical(self):
-        self.rect.y += self.speed
+    def movePlayer(self,x,y):
+        self.rect.x += x
+        self.rect.y += y 
 
 class Wall(pg.sprite.Sprite):
     def __init__(self, x, y, w, h):
@@ -103,19 +99,15 @@ while not done:
 
     if event.type == pg.KEYDOWN:
         if keys[pg.K_LEFT]:
-            player.set_speed(-1)
-            player.moveLateral()
+            player.movePlayer(-1,0)
         if keys[pg.K_RIGHT]:
-            player.set_speed(1)
-            player.moveLateral()
+            player.movePlayer(1,0)
         if keys[pg.K_UP]:
-            player.set_speed(-1)
-            player.moveVertical()
+            player.movePlayer(0,-1)
         if keys[pg.K_DOWN]:
-            player.set_speed(1)
-            player.moveVertical()
+            player.movePlayer(0,1)
     elif event.type == pg.KEYUP:
-        player.set_speed(0)
+        player.movePlayer(0,0)
 
     
     # --- Game logic should go here
