@@ -1,6 +1,7 @@
 import random
 
 # -- SORTING FUNCTION -- #
+
 def bubble_sort(arr):
     # We go through the list as many times as there are elements
     for i in range(len(arr)):
