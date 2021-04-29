@@ -9,12 +9,17 @@ def bubble_sort(arr):
             if arr[j] > arr[j + 1]:
                 # Swap
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+            #endif
+        #next j
+    #next i
+#endprocedure
 
 # -- TEST ARRAY -- #
 
 list = [] * 1000
 for x in range(1000):
     list.append(random.randint(0, 1000))
+#next x
 print(list)
 
 # -- BUBBLE SORT -- #
