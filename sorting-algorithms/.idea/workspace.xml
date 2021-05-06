@@ -44,7 +44,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/insertion-sort.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ajg_project" />
   </component>
   <component name="RunManager" selected="Python.insertion-sort">
     <configuration name="bubble-sort" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -128,10 +128,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1619557324221" />
-    <state x="548" y="167" key="FileChooserDialogImpl" timestamp="1619557323153">
+    <state x="548" y="167" key="FileChooserDialogImpl" timestamp="1620287828307">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="548" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1619557323153" />
+    <state x="548" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1620287828307" />
     <state width="555" height="665" key="GridCell.Tab.0.bottom" timestamp="1619557618493">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
